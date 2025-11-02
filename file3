@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dias Holding Group</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", "Segoe UI", sans-serif;
+      background-color: #000;
+      color: #d4af37;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* SABİT MENÜ */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      z-index: 1000;
+      border-bottom: 1px solid #333;
+    }
+
+    nav .logo-text {
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #d4af37;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffda77;
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-switch button {
+      background: none;
+      border: 1px solid #d4af37;
+      color: #d4af37;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .lang-switch button:hover {
+      background: #d4af37;
+      color: #000;
+    }
+
+    /* LOGO BÖLÜMÜ */
+    header {
+      text-align: center;
+      padding: 160px 20px 60px;
+      animation: fadeIn 1.8s ease;
+    }
+
+    header img {
+      width: 260px;
+      max-width: 80%;
+      height: auto;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: logoFade 2s ease forwards;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 30px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #d4af37, #ffda77);
+      color: #000;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    }
+
+    /* GENEL BÖLÜMLER */
+    section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: #d4af37;
+      border-left: 4px solid #d4af37;
+      padding-left: 10px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .addresses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .address-box {
+      background: #111;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(212, 175, 55, 0.2);
+    }
+
+    footer {
+      background: #111;
+      color: #d4af37;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      border-top: 1px solid #333;
+    }
+
+    footer a {
+      color: #ffda77;
+      text-decoration: none;
+    }
+
+    /* YUKARI ÇIK BUTONU */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background: linear-gradient(135deg, #d4af37, #ffda77);
+      color: #000;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      transition: all 0.3s;
+      z-index: 999;
+    }
+
+    #scrollTopBtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+
+    /* ANİMASYONLAR */
+    @keyframes logoFade {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      nav ul {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      header { padding-top: 140px; }
+      .cta-button { padding: 10px 24px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- SABİT MENÜ -->
+  <nav>
+    <div class="logo-text">Dias Holding Group</div>
+    <ul>
+      <li><a href="#about">Hakkımızda</a></li>
+      <li><a href="#services">Faaliyet</a></li>
+      <li><a href="#contact">İletişim</a></li>
+    </ul>
+    <div class="lang-switch">
+      <button onclick="setLang('tr')">🇹🇷</button>
+      <button onclick="setLang('en')">🇬🇧</button>
+    </div>
+  </nav>
+
+  <!-- LOGO ALANI -->
+  <header>
+    <img src="logo.png" alt="Dias Holding Group Logosu" />
+    <p>
+      2010 yılında Avustralya'nın Brisbane eyaletinde kurulmuş olup,
+      inşaat, savunma sanayi ve gıda sektörlerinde faaliyet gösteren Türk şirketidir.
+    </p>
+    <a href="#contact" class="cta-button">💎 Bize Ulaşın</a>
+  </header>
+
+  <!-- HAKKIMIZDA -->
+  <section id="about">
+    <h2 id="about-title">Hakkımızda</h2>
+    <p id="about-text">
+      Dias Holding Group, global pazarda sürdürülebilirlik, yenilikçilik ve güven ilkeleriyle faaliyet göstermektedir.
+      İnşaat, savunma sanayi ve gıda sektörlerinde yüksek standartlarda projeler geliştirerek,
+      hem Avustralya hem de uluslararası alanda güçlü bir konum edinmiştir.
+    </p>
+  </section>
+
+  <!-- FAALİYETLER -->
+  <section id="services">
+    <h2>Faaliyet Alanlarımız</h2>
+    <ul>
+      <li><strong>İnşaat:</strong> Konut, altyapı ve endüstriyel projelerde uzmanlık.</li>
+      <li><strong>Savunma Sanayi:</strong> Stratejik teknolojik çözümler ve üretim desteği.</li>
+      <li><strong>Gıda:</strong> Kaliteli üretim ve sürdürülebilir tedarik zinciri yönetimi.</li>
+    </ul>
+  </section>
+
+  <!-- İLETİŞİM -->
+  <section id="contact">
+    <h2>İletişim</h2>
+    <p>E-posta: <a href="mailto:office@diasholding.com.au">office@diasholding.com.au</a></p>
+    <div class="addresses">
+      <div class="address-box">
+        <h3>Avustralya Ofisi</h3>
+        <p>345 Queen Caddesi, Brisbane QLD 4000</p>
+      </div>
+      <div class="address-box">
+        <h3>Türkiye Ofisi</h3>
+        <p>Maslak, Eski Büyükdere Cd. No:7<br>34398 Sarıyer / İstanbul</p>
+      </div>
+      <div class="address-box">
+        <h3>Abu Dhabi Ofisi</h3>
+        <p>Sky Tower</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2010 - <span id="year"></span> Dias Holding Group | Tüm Hakları Saklıdır.
+  </footer>
+
+  <!-- Yukarı Çık Butonu -->
+  <button id="scrollTopBtn" title="Yukarı Çık">⬆</button>
+
+  <script>
+    // Yıl Güncelle
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Dil Değişimi
+    const aboutTitle = document.getElementById("about-title");
+    const aboutText = document.getElementById("about-text");
+
+    const translations = {
+      tr: {
+        title: "Hakkımızda",
+        text: "Dias Holding Group, global pazarda sürdürülebilirlik, yenilikçilik ve güven ilkeleriyle faaliyet göstermektedir. İnşaat, savunma sanayi ve gıda sektörlerinde yüksek standartlarda projeler geliştirerek, hem Avustralya hem de uluslararası alanda güçlü bir konum edinmiştir."
+      },
+      en: {
+        title: "About Us",
+        text: "Dias Holding Group operates in the global market with the principles of sustainability, innovation, and reliability. The company develops high-standard projects in the construction, defense industry, and food sectors, establishing a strong presence both in Australia and internationally."
+      }
+    };
+
+    function setLang(lang) {
+      aboutTitle.textContent = translations[lang].title;
+      aboutText.textContent = translations[lang].text;
+    }
+
+    // Scroll efektleri
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+
+    // Yukarı çık butonu
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = () => {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
+    };
+    scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  </script>
+</body>
+</html>
